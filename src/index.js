@@ -1,12 +1,7 @@
-
 const { Client, GatewayIntentBits, ActivityType, REST, Routes } = require("discord.js")
-// Imports
-const { Client, GatewayIntentBits, ActivityType } = require("discord.js")
-
 const { config } = require("dotenv")
 
 config()
-
 
 const commands = [
     {
@@ -14,9 +9,6 @@ const commands = [
         description: "Replies with Pong"
     }
 ]
-
-// Variables
-
 const token = process.env.TOKEN
 const clientId = process.env.CLIENT_ID
 const client = new Client({ intents: [ GatewayIntentBits.Guilds ] })
@@ -34,12 +26,10 @@ const rest = new REST({ version: '10' }).setToken(token);
     }
 })();
 
-// Client (Ready)
 client.on("ready", () => {
     console.log(`${client.user.username} is online.`)
     // client.user.setActivity("a youtube video", { type: ActivityType.Playing })
 })
-
 
 client.on("interactionCreate", async (interaction) => {
     if (!interaction.isChatInputCommand) return;
@@ -51,7 +41,3 @@ client.on("interactionCreate", async (interaction) => {
 })
 
 client.login(token)
-
-// Client (Login)
-client.login(token)
-
